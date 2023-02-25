@@ -1,6 +1,9 @@
+<div class="logoPlural">
+  <img src="assets/img/Plural.png" alt="">
+</div>
 
-<div class="form-container mat-elevation-z5">
-  <h1>Cadastre-se</h1>
+<div class="form-container text-center mat-elevation-z5">
+  <img class="User " src="assets/img/User.png" alt="User">
 <form [formGroup]="signUpForm" (ngSubmit)="submit()">
   <mat-form-field>
     <input matInput placeholder="Nome" formControlName="name" type="text"/>
@@ -33,7 +36,7 @@
     Senhas não conferem!
   </mat-error>
   <div class="center margin-top">
-    <button mat-raised-button  type="submit">
+    <button mat-raised-button class="btn-azul"  type="submit">
       Cadastrar-se
     </button>
   </div>

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { MatInputModule, MatToolbarModule } from '@angular/material';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu'; // importe o módulo MatMenuModule
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     HotToastModule.forRoot(),
-    MatMenuModule
+    MatMenuModule, // adicione o módulo MatMenuModule aos imports
+    BrowserAnimationsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
