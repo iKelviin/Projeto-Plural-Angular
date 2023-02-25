@@ -1,9 +1,16 @@
 
-<div class="form-container mat-elevation-z5">
-  <h1>Login</h1>
+<div class="logoPlural">
+  <img src="assets/img/Plural.png" alt="">
+</div>
+
+<div class="form-container text-center mat-elevation-z5">
+  <img class="User" src="assets/img/User.png" alt="User">
+
 <form [formGroup]="loginForm" (ngSubmit)="submit()">
   <mat-form-field>
+    
     <input matInput placeholder="Email" formControlName="email" type="email"/>
+    
     <mat-error *ngIf="email?.errors?.['required']">
       Campo Obrigatório!
     </mat-error>

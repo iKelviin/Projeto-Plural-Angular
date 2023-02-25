@@ -5,6 +5,10 @@ import { HomeComponent } from './components/home/home.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard'
+
+const redirectToLogin = () => redirectUnauthorizedTo(['login']);
+const redirecToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
@@ -14,15 +18,18 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    ...canActivate(redirecToHome)
   },
   {
     path: 'sign-up',
-    component: SignUpComponent
+    component: SignUpComponent,
+    ...canActivate(redirecToHome)
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    ...canActivate(redirectToLogin)
   }
 ];
 

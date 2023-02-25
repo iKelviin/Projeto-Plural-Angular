@@ -1,3 +1,5 @@
+@import "../scss/base/variables";
+
 mat-toolbar{
   justify-content: space-between;
 }
@@ -5,3 +7,16 @@ mat-toolbar{
 .content {
   padding: 32px;
 }
+
+.logoPlural{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+body{
+  background-color: $AzulPlural;
+}
+
+
