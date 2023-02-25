@@ -5,7 +5,7 @@
   
     <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
       <button mat-button [matMenuTriggerFor]="userMenu">
-        <mat-icon>account_circle</mat-icon>
+        <img class="profile-image-toolbar" width="32" height="30" [src]="user.photoURL ?? 'assets/img/User.png'">
         {{user.displayName}}
         <mat-icon>expand_more</mat-icon>
       </button>
@@ -21,5 +21,6 @@
   </mat-toolbar>
     
   <mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="/profile">Perfil</button>
     <button mat-menu-item (click)="logout()">Sair</button>
   </mat-menu>

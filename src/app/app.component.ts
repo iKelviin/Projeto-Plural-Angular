@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
