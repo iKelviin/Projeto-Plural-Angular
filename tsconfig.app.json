@@ -5,6 +5,10 @@
     "outDir": "./out-tsc/app",
     "types": []
   },
+  "paths": {
+    "@ngneat/overview": ["node_modules/@ngneat/overview"]
+  },
+
   "files": [
     "src/main.ts",
     "src/polyfills.ts"

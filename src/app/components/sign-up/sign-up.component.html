@@ -1,7 +1,13 @@
 
 <div class="form-container mat-elevation-z5">
-  <h1>Login</h1>
-<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  <h1>Cadastre-se</h1>
+<form [formGroup]="signUpForm" (ngSubmit)="submit()">
+  <mat-form-field>
+    <input matInput placeholder="Nome" formControlName="name" type="text"/>
+    <mat-error *ngIf="name?.errors?.['required']">
+      Campo Obrigatório!
+    </mat-error>
+  </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Email" formControlName="email" type="email"/>
     <mat-error *ngIf="email?.errors?.['required']">
@@ -17,13 +23,20 @@
       Campo Obrigatório!
     </mat-error>
   </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Confirme a Senha" formControlName="confirmPassword" type="password"/>
+    <mat-error *ngIf="confirmPassword?.errors?.['required']">
+      Campo Obrigatório!
+    </mat-error>
+  </mat-form-field>
+  <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+    Senhas não conferem!
+  </mat-error>
   <div class="center margin-top">
     <button mat-raised-button  type="submit">
-      Entrar
+      Cadastrar-se
     </button>
   </div>
 
-  <span class="center margin-top">Não tem acesso? <a class="sign-up-link" routerLink="/sign-up">Cadastre-se!</a></span>
 </form>
 </div>
-

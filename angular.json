@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": { "includePaths": ["node_modules"] },
             "outputPath": "dist/login",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -102,6 +103,11 @@
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
     }
   },
   "cli": {
