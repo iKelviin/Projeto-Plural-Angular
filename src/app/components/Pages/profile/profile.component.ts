@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '@angular/fire/auth';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { concatMap } from 'rxjs';
@@ -19,12 +19,12 @@ export class ProfileComponent implements OnInit{
 
   user$ = this.usersService.currentUserProfile$;
 
-  profileForm = new FormGroup({
-    uid: new FormControl(''),
-    displayName: new FormControl(''),
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    occupation: new FormControl(''),
+  profileForm = new UntypedFormGroup({
+    uid: new UntypedFormControl(''),
+    displayName: new UntypedFormControl(''),
+    firstName: new UntypedFormControl(''),
+    lastName: new UntypedFormControl(''),
+    occupation: new UntypedFormControl(''),
   });
 
   constructor(

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { combineLatest, map, startWith } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { UsersService } from 'src/app/services/Users/users.service';
@@ -12,8 +12,8 @@ import {ChatsService} from 'src/app/services/Chats/chats.service'
 })
 export class ChatComponent implements OnInit{
   user$ = this.usersService.currentUserProfile$;
-  searchControl = new FormControl('');
-  chatListControl = new FormControl('');
+  searchControl = new UntypedFormControl('');
+  chatListControl = new UntypedFormControl('');
 
   users$ = combineLatest([
     this.usersService.allUsers$,
