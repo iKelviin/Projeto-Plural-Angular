@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { switchMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
+import { UsersService } from 'src/app/services/Users/users.service';
 
 
 export function passwordMatchValidator(): ValidatorFn {
@@ -39,7 +41,8 @@ export class SignUpComponent implements OnInit{
 
   constructor(private authService : AuthenticationService,
     private toast: HotToastService,
-    private router: Router){}
+    private router: Router,
+    private usersService: UsersService){}
 
   ngOnInit(): void {
 
@@ -62,18 +65,27 @@ export class SignUpComponent implements OnInit{
   }
 
   submit() {
-    if(!this.signUpForm.valid) return;
+    const { name, email, password } = this.signUpForm.value;
 
-    const {name,email,password} = this.signUpForm.value;
-    this.authService.signUp(name,email,password).pipe(
-      this.toast.observe({
-        success: 'Cadastrado com Sucesso!',
-        loading: 'Processando...',
-        error: ({message}) => `${message}`
-      })
-    ).subscribe(()=> {
-      this.router.navigate(['/home'])
-    })
+    if (!this.signUpForm.valid || !name || !password || !email) {
+      return;
+    }
+
+    this.authService
+      .signUp(email, password)
+      .pipe(
+        switchMap(({ user: { uid } }) =>
+          this.usersService.addUser({ uid, email, displayName: name })
+        ),
+        this.toast.observe({
+          success: 'Cadastro realizado com sucesso!',
+          loading: 'Cadastrando...',
+          error: ({ message }) => `${message}`,
+        })
+      )
+      .subscribe(() => {
+        this.router.navigate(['/home']);
+      });
   }
 
 

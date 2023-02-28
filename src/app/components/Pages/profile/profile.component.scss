@@ -1,0 +1,38 @@
+@import "../../../../scss/base/variables";
+
+.profile-image > img{
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile-image {
+    position: relative;
+}
+.profile-image > button {
+    position: absolute;
+    bottom: 5px;
+    right: 32%;
+}
+
+.icon-edit{
+    background-color: $AzulPlural;
+}
+
+.icon-edit:hover{
+    color: $AzulPlural;
+    background-color: white;
+}
+
+.form-container{
+    max-width: 400px;
+}
+
+.row{
+    display: flex;
+    gap: 16px;
+}
+
+.user-info{
+    font-size: 12px;
+}

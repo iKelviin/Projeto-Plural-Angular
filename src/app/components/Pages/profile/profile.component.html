@@ -1,0 +1,55 @@
+
+<div class="logoPlural text-center">
+    <img src="assets/img/Plural.png" alt="">
+  </div>
+
+<div class="form-container mat-elevation-z5 text-center" *ngIf="user$ | async as user">
+
+    <div class="profile-image">
+        <img width="120" height="120" [src]="user.photoURL ?? 'assets/img/User.png'">
+        <button mat-mini-fab class="icon-edit" (click)="inputField.click()">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+
+    <div class="user-info">
+        <h1>{{user.displayName}}</h1>
+        <h2>{{user.occupation}}</h2>
+    </div>
+
+
+    <input #inputField  type="file" hidden (change)="uploadFile($event, user)">
+    <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+        <div class="row">
+            <mat-form-field>
+                <input type="text"
+                matInput
+                formControlName="displayName"
+                placeholder="Usuario">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <input type="text"
+                matInput
+                formControlName="firstName"
+                placeholder="Nome">
+            </mat-form-field>
+            <mat-form-field>
+                <input type="text"
+                matInput
+                formControlName="lastName"
+                placeholder="Sobrenome">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <input type="text"
+                matInput
+                formControlName="occupation"
+                placeholder="Cargo">
+            </mat-form-field>
+        </div>
+        <button type="submit" class="margin-top btn-azul" mat-raised-button>Salvar</button>
+    </form>
+</div>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarComponent } from './navbar.component';
+import { PassagemTurnoComponent } from './passagem-turno.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+describe('PassagemTurnoComponent', () => {
+  let component: PassagemTurnoComponent;
+  let fixture: ComponentFixture<PassagemTurnoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ PassagemTurnoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(PassagemTurnoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

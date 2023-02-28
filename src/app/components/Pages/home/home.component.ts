@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
+import { UsersService } from 'src/app/services/Users/users.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { AuthenticationService } from 'src/app/services/Authentication/authentic
 })
 export class HomeComponent {
 
-  user$ = this.authService.currentUser$;
+  user$ = this.usersService.currentUserProfile$;
 
-  constructor(private authService: AuthenticationService){}
+  constructor(private usersService: UsersService){}
 }

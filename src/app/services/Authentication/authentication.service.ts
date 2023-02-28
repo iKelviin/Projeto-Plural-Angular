@@ -21,12 +21,12 @@ export class AuthenticationService {
     return from(this.auth.signOut());
   }
 
-  signUp(name: any,email: any,password: any){
-    return from(createUserWithEmailAndPassword(this.auth,email,password)).pipe(
-    switchMap(({user}) => updateProfile(user, { displayName: name})));
+  signUp(email: any,password: any){
+    return from(createUserWithEmailAndPassword(this.auth,email,password));
+    
   }
 
-  updateProfileData(profileData: Partial<UserInfo>): Observable<void> {
+  /*updateProfileData(profileData: Partial<UserInfo>): Observable<void> {
     const user = this.auth.currentUser;
     return of(user).pipe(
       concatMap(user => {
@@ -35,5 +35,5 @@ export class AuthenticationService {
         return updateProfile(user, profileData);
       })
     )
-  }
+  }*/
 }

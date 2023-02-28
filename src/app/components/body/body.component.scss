@@ -1,0 +1,22 @@
+@import "../../../scss/base/variables";
+
+.body{
+    height: 100vh;
+    margin-left: 5rem;
+    z-index: 0;
+    position: relative;
+    top: 0;
+    transition: all .5s ease;
+    background-color: $AzulPlural;
+    padding: 3rem;
+}
+
+.body-trimmed{
+    width: calc(100% - 18rem);
+    margin-left: 18rem;
+}
+
+.body-md-screen{
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+}

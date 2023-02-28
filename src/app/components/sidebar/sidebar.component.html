@@ -1,0 +1,18 @@
+<div class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''">
+    <div class="logo-container">
+        <img *ngIf="!collapsed" @fadeInOut class="logo" src="../../../assets/img/logo-white.png" width="50px" height="50px" (click)="toggleCollapse()">
+        <img *ngIf="collapsed" @fadeInOut src="../../../assets/img/Plural.png" height="60">        
+        <mat-icon class="btn-close" @rotate *ngIf="collapsed" (click)="closeSideBar()">close</mat-icon>       
+    </div>
+    <ul class="sidebar-bar">
+        <li class="sidebar-bar-item" *ngFor="let data of sideData">
+            <a class="sidebar-bar-link" [routerLink]="[data.routeLink]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+            >
+                <mat-icon class="sidebar-link-icon">{{data.icon}}</mat-icon>
+                <span class="sidebar-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { UsersService } from './services/Users/users.service';
+
+interface SideBarToggle{
+  screenWidth: number;
+  collapsed: boolean;
+}
 
 @Component({
   selector: 'app-root',
@@ -18,7 +24,19 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class AppComponent {
 
-  constructor(public authService: AuthenticationService){}
+  user$ = this.usersService.currentUserProfile$;
 
-  
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router,
+    private usersService: UsersService
+    ){}
+
+  isSideBarCollapsed = false;
+  screenWidth= 0;
+
+  onToggleSideBar(data: SideBarToggle): void {
+    this.screenWidth = data.screenWidth;
+    this.isSideBarCollapsed = data.collapsed;
+  }
 }
