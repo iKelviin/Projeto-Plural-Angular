@@ -4,10 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // Material
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu'; // importe o módulo MatMenuModule
-import { MatInputModule, MatToolbarModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material/menu'; 
+import { MatInputModule } from '@angular/material/input'; 
+import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
+import { MatListModule } from '@angular/material/list'; 
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +38,11 @@ import { BodyComponent } from './components/body/body.component';
 import { ChatComponent } from './components/Pages/chat/chat.component';
 import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passagem-turno.component';
 
+import { DateDisplayPipe } from './pipes/date-display.pipe';
+import { TimeAgoPipe } from 'time-ago-pipe';
+import { DatePipe } from '@angular/common';
+import {} from '@angular/material/form-field';
+import {} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -47,16 +55,17 @@ import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passag
     SidebarComponent,
     BodyComponent,
     ChatComponent,
-    PassagemTurnoComponent
+    PassagemTurnoComponent,
+    DateDisplayPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbarModule,
     MatIconModule,
+    MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule,
+    MatToolbarModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HotToastModule.forRoot(),
@@ -65,10 +74,12 @@ import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passag
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideStorage(()=> getStorage()),
-    provideFirestore(()=> getFirestore())
+    provideFirestore(()=> getFirestore()),
+    MatAutocompleteModule,
+    MatListModule
     
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

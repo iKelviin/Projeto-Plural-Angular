@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
 import {
   collection,
+  collectionData,
   doc,
   docData,
   Firestore,
-  getDoc,
+  query,
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { filter, from, map, Observable, of, switchMap } from 'rxjs';
+import { from, Observable, of, switchMap } from 'rxjs';
 import { ProfileUser } from '../../models/user-profile';
-import { AuthenticationService } from '../../services/Authentication/authentication.service';
+import { AuthenticationService } from './../Authentication/authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private firestore: Firestore, private authService: AuthenticationService) {}
-
   get currentUserProfile$(): Observable<ProfileUser | null> {
     return this.authService.currentUser$.pipe(
       switchMap((user) => {
@@ -31,13 +30,24 @@ export class UsersService {
     );
   }
 
-  addUser(user: ProfileUser): Observable<void> {
-    const ref = doc(this.firestore, 'users', user.uid);
+  get allUsers$(): Observable<ProfileUser[]> {
+    const ref = collection(this.firestore, 'users');
+    const queryAll = query(ref);
+    return collectionData(queryAll) as Observable<ProfileUser[]>;
+  }
+
+  constructor(
+    private firestore: Firestore,
+    private authService: AuthenticationService
+  ) {}
+
+  addUser(user: ProfileUser): Observable<any> {
+    const ref = doc(this.firestore, 'users', user?.uid);
     return from(setDoc(ref, user));
   }
 
-  updateUser(user: ProfileUser): Observable<void> {
-    const ref = doc(this.firestore, 'users', user.uid);
+  updateUser(user: ProfileUser): Observable<any> {
+    const ref = doc(this.firestore, 'users', user?.uid);
     return from(updateDoc(ref, { ...user }));
   }
 }
