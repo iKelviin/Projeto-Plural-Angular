@@ -47,5 +47,4 @@
     "./lib/until-destroy": "./dist/lib/until-destroy/index.js",
     "./lib/take-until-destroy": "./dist/lib/take-until-destroy/index.js"
   }
-
 }

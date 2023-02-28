@@ -5,9 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 // Material
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu'; // importe o módulo MatMenuModule
-import { MatInputModule, MatToolbarModule } from '@angular/material';
+import { MatDividerModule, MatInputModule, MatListModule, MatRadioModule, MatSelectModule, MatToolbarModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {  MatAutocompleteModule } from '@angular/material/autocomplete'
+
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -65,8 +67,12 @@ import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passag
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideStorage(()=> getStorage()),
-    provideFirestore(()=> getFirestore())
-    
+    provideFirestore(()=> getFirestore()),
+    MatAutocompleteModule,
+    MatListModule,
+    MatDividerModule,
+    MatSelectModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

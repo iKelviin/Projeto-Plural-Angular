@@ -1,0 +1,41 @@
+.container{
+  display: flex;
+  height: calc(100vh - 70px);
+
+}
+
+.chat-list{
+  width: 40%;
+  margin: 16px;
+  background-color: white;
+  border-radius: 16px;
+}
+
+.messages{
+  width: 60%;
+  margin: 16px;
+  background-color: white;
+  border-radius: 16px;
+}
+
+.input-search{
+  margin: 24px;
+}
+
+.chat-title{
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.chat-name{
+  font-weight: 500;
+}
+
+.chat-date{
+  font-size: 0.7rem;
+  color: rgba(0,0,0,0.7);
+}
+
+
+
+
