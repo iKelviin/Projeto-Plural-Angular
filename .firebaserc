@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-plural": {
+      "hosting": {
+        "Login": [
+          "angular-plural"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-plural"
+  }
+}

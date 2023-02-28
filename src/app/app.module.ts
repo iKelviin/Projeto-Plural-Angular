@@ -23,6 +23,9 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage } from '@angular/fire/storage'
 import { getFirestore, provideFirestore } from '@angular/fire/firestore'
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
 //Components
@@ -40,6 +43,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BodyComponent } from './components/body/body.component';
 import { ChatComponent } from './components/Pages/chat/chat.component';
 import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passagem-turno.component';
+import { ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 
 
 @NgModule({
@@ -74,10 +78,14 @@ import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passag
     provideFirestore(()=> getFirestore()),
     MatAutocompleteModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule
 
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

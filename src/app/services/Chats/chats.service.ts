@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import 'firebase/firestore';
 import {
   addDoc,
   collection,
@@ -25,7 +26,6 @@ export class ChatsService {
     private firestore: Firestore,
     private usersService: UsersService
   ) {}
-
   get myChats$(): Observable<Chat[]> {
     const ref = collection(this.firestore, 'chats');
     return this.usersService.currentUserProfile$.pipe(
