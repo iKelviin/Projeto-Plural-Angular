@@ -3,11 +3,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 // Material
-import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu'; // importe o módulo MatMenuModule
-import { MatDividerModule, MatInputModule, MatListModule, MatRadioModule, MatSelectModule, MatToolbarModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
 import {  MatAutocompleteModule } from '@angular/material/autocomplete'
 
 
@@ -69,9 +71,7 @@ import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passag
     provideStorage(()=> getStorage()),
     provideFirestore(()=> getFirestore()),
     MatAutocompleteModule,
-    MatListModule,
-    MatDividerModule,
-    MatSelectModule
+    MatDividerModule
 
   ],
   providers: [],
