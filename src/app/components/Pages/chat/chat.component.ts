@@ -3,12 +3,13 @@ import { UntypedFormControl } from '@angular/forms';
 import { combineLatest, map, startWith } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { UsersService } from 'src/app/services/Users/users.service';
-import {ChatsService} from 'src/app/services/Chats/chats.service'
+import {ChatsService} from 'src/app/services/Chats/chats.service';
+
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit{
   user$ = this.usersService.currentUserProfile$;
