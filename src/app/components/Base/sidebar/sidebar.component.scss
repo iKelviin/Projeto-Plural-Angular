@@ -1,14 +1,13 @@
-@import "../../../scss/base/variables";
+@import "../../../../scss/base/variables";
 
 .sidebar {
-    background-color: $AzulPlural;
+    background: $AzulPlural;
     transition: all .5s ease;
     position: fixed;
     z-index: 1;
     top: 0;
     width: 5rem;
     height: 100vh;
-    box-shadow: 0.063rem 0 1.25rem 0 black;
 
     .logo-container{
         display: flex;

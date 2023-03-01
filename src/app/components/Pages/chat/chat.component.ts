@@ -52,6 +52,11 @@ export class ChatComponent implements OnInit {
     this.myChats$,
   ]).pipe(map(([value, chats]) => chats.find((c) => value && value.length > 0 && c.id === value[0])
   ));
+  /*selectedChat$ = combineLatest([
+    this.chatListControl.valueChanges,
+    this.myChats$,
+  ]).pipe(map(([value, chats]) => chats.find((c) => c.id === value[0])
+  ));*/
 
   constructor(
     private usersService: UsersService,

@@ -1,6 +1,5 @@
-body{
-    background-image: url("../../../../assets/img/papel\ de\ parede.PNG");
-}
+@import "../../../../scss/base/_variables.scss";
+
 h1{
-    color: white;
+    color: $AzulPlural;
 }

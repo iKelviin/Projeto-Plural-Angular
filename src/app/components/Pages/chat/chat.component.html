@@ -21,22 +21,17 @@
       </div>
       <mat-selection-list [multiple]="false" [formControl]="chatListControl">
         <mat-divider></mat-divider>
+
         <mat-list-option *ngFor="let chat of myChats$ | async" [value]="chat.id">
-          <img
-            matListAvatar
-            [src]="
-              chat.chatPic ? chat.chatPic : 'assets/img/User.png'
-            "
-          />
+          <img matListAvatar [src]="chat.chatPic ? chat.chatPic : 'assets/img/User.png'"/>
           <p mat-line class="chat-title">
-            <span class="chat-name">{{ chat.chatName }}</span
-            ><span class="chat-date">{{
-              chat.lastMessageDate | dateDisplay
-            }}</span>
+            <span class="chat-name">{{ chat.chatName }}</span>
+            <span class="chat-date">{{chat.lastMessageDate | dateDisplay}}</span>
           </p>
           <p mat-line>{{ chat.lastMessage }}</p>
           <mat-divider></mat-divider>
         </mat-list-option>
+
       </mat-selection-list>
     </div>
     <div class="messages mat-elevation-z5">
@@ -46,9 +41,14 @@
         <h2>{{ selectedChat.chatName }}</h2>
       </div>
       <ng-template #noChatSelected>
-        <h2>Mensagens</h2>
+        <div class="messages-header">
+          <h2>Mensagens</h2>
+        </div>
       </ng-template>
       <mat-divider></mat-divider>
+
+
+
       <div class="chat-area">
         <ng-container *ngIf="user$ | async as currentUser">
           <ng-container *ngIf="messages$ | async as messages">
@@ -68,6 +68,7 @@
         </ng-container>
         <div #endOfChat></div>
       </div>
+
       <div class="input-area">
         <mat-form-field appearance="outline">
           <input
@@ -81,5 +82,7 @@
           </button>
         </mat-form-field>
       </div>
+
+      
     </div>
   </div>

@@ -30,11 +30,11 @@ import { HomeComponent } from './components/Pages/home/home.component';
 import { environment } from '../environments/environment';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './components/Base/navbar/navbar.component';
 import { getStorage } from 'firebase/storage';
 import { ProfileComponent } from './components/Pages/profile/profile.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { BodyComponent } from './components/body/body.component';
+import { SidebarComponent } from './components/Base/sidebar/sidebar.component';
+import { BodyComponent } from './components/Base/body/body.component';
 import { ChatComponent } from './components/Pages/chat/chat.component';
 import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passagem-turno.component';
 
