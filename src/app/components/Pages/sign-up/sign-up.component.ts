@@ -80,7 +80,7 @@ export class SignUpComponent implements OnInit{
         this.toast.observe({
           success: 'Cadastro realizado com sucesso!',
           loading: 'Cadastrando...',
-          error: 'Senha muito curta ou E-mail invalido.',
+          error: ({ message }) => `${message}`,
         })
       )
       .subscribe(() => {

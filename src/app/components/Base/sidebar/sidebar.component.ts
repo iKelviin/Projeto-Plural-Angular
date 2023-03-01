@@ -18,7 +18,7 @@ interface SideBarToggle{
         animate('1000ms',
         style({opacity: 1})
         )
-      ])
+      ])      
     ]),
     trigger('rotate', [
       transition(':enter', [
@@ -51,7 +51,6 @@ export class SidebarComponent implements OnInit{
   collapsed = false;
   screenWidth = 0;
   sideData = sidebarData;
-  multiple: boolean = false;
 
 
   toggleCollapse(): void{

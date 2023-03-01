@@ -4,13 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // Material
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatInputModule } from '@angular/material/input';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu'; 
+import { MatInputModule } from '@angular/material/input'; 
+import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatListModule } from '@angular/material/list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
+import { MatListModule } from '@angular/material/list'; 
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -43,8 +43,6 @@ import { TimeAgoPipe } from 'time-ago-pipe';
 import { DatePipe } from '@angular/common';
 import {} from '@angular/material/form-field';
 import {} from '@angular/material/input';
-import { DateDisplayHeaderPipe } from './pipes/dateDisplayHeader.pipe';
-import { SublevelBarComponent } from './components/Base/sidebar/sublevel-bar.component';
 
 @NgModule({
   declarations: [
@@ -58,9 +56,7 @@ import { SublevelBarComponent } from './components/Base/sidebar/sublevel-bar.com
     BodyComponent,
     ChatComponent,
     PassagemTurnoComponent,
-    DateDisplayPipe,
-    DateDisplayHeaderPipe,
-    SublevelBarComponent
+    DateDisplayPipe
   ],
   imports: [
     BrowserModule,
@@ -81,7 +77,7 @@ import { SublevelBarComponent } from './components/Base/sidebar/sublevel-bar.com
     provideFirestore(()=> getFirestore()),
     MatAutocompleteModule,
     MatListModule
-
+    
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
