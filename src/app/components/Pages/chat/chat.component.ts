@@ -26,6 +26,8 @@ export class ChatComponent implements OnInit {
   user$ = this.usersService.currentUserProfile$;
   myChats$ = this.chatsService.myChats$;
 
+  currentDate = [new Date()];
+
   searchControl = new FormControl('');
   messageControl = new FormControl('');
   chatListControl = new FormControl('');

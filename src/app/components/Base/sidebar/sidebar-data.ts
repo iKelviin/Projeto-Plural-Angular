@@ -1,4 +1,6 @@
-export const sidebarData = [
+import { ISidebarData } from "./helper";
+
+export const sidebarData: ISidebarData[] = [
     {
         routeLink: 'home',
         icon: 'home',
@@ -7,7 +9,24 @@ export const sidebarData = [
     {
         routeLink: 'chat',
         icon: 'chat',
-        label: 'Chat'
+        label: 'Chat',
+        items: [
+          {
+            routeLink: 'chat',
+            icon: 'chat',
+            label: 'Chat',
+          },
+          {
+            routeLink: 'turno',
+            icon: 'supervisor_account',
+            label: 'Passagem de Turno'
+          },
+          {
+              routeLink: 'profile',
+              icon: 'person',
+              label: 'Perfil'
+          }
+        ]
     },
     {
         routeLink: 'turno',
