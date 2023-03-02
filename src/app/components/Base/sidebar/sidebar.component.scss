@@ -71,8 +71,12 @@
             border-radius: 30px;
             color: $AzulPlural;
         }
+        .menu-collapse-icon{
+            color: $AzulPlural;
+        }
 
     }
+    
 }
 
 .active {
@@ -81,5 +85,47 @@
     .sidebar-link-icon,
     .sidebar-link-text{
         color: $AzulPlural;
+    }
+}
+
+.menu-collapse-icon{
+    font-size: 25px;
+    text-align: center;
+    margin-left: 8rem;
+    color: white;
+}
+
+.sublevel-bar {
+    list-style: none;
+    margin-left: 20px;
+
+    .sublevel-bar-item{
+        .sublevel-bar-link{
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            margin-left: 20px;
+            height: 3rem;  
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all .3s ease;
+
+            .sublevel-link-icon{
+                
+                text-align: center;
+                margin-left: 15px;
+            }
+
+            .sublevel-link-text{
+                margin-left: 0.8rem;
+            }
+        }
+
+        .sublevel-bar-link:hover{
+            color: $AzulPlural;
+            background-color: white;
+            
+        }
     }
 }

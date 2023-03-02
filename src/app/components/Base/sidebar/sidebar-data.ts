@@ -7,9 +7,9 @@ export const sidebarData: ISidebarData[] = [
         label: 'Home'
     },
     {
-        routeLink: 'chat',
-        icon: 'chat',
-        label: 'Chat',
+        routeLink: 'TI',
+        icon: 'computer',
+        label: 'T.I',
         items: [
           {
             routeLink: 'chat',
@@ -18,12 +18,11 @@ export const sidebarData: ISidebarData[] = [
           },
           {
             routeLink: 'turno',
-            icon: 'supervisor_account',
-            label: 'Passagem de Turno'
+            icon: 'home',
+            label: 'Passagem de turno'
           },
           {
               routeLink: 'profile',
-              icon: 'person',
               label: 'Perfil'
           }
         ]

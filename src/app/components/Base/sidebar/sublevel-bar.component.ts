@@ -25,7 +25,7 @@ import { ISidebarData } from './helper';
           *ngIf="!item.items || (item.items && item.items.length === 0)"
           [routerLink]="[item.routeLink]"
           routerLinkActive="active-sublevel"
-          [routerLinkActiveOptions]="{exact: true}"]
+          [routerLinkActiveOptions]="{exact: true}"
         >
         <mat-icon class="sublevel-link-icon">{{item.icon}}</mat-icon>
         <span class="sublevel-link-text" *ngIf="collapsed">{{item.label}}</span>

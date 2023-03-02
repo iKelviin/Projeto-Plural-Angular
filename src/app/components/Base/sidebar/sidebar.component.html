@@ -4,18 +4,38 @@
         <img *ngIf="collapsed" @fadeInOut src="../../../assets/img/Plural.png" height="60">
         <mat-icon class="btn-close" @rotate *ngIf="collapsed" (click)="closeSideBar()">close</mat-icon>
     </div>
+    
     <ul class="sidebar-bar">
         <li class="sidebar-bar-item" *ngFor="let data of sideData">
-            <a class="sidebar-bar-link" [routerLink]="[data.routeLink]"
+            <a class="sidebar-bar-link" (click)="handleClick(data)" *ngIf="data.items && data.items.length > 0">
+                    <mat-icon class="sidebar-link-icon">{{data.icon}}</mat-icon>
+                    <span class="sidebar-link-text" @fadeInOut *ngIf="collapsed">
+                        {{data.label}}
+                    </span>
+                    <mat-icon *ngIf="data.items && collapsed" class="menu-collapse-icon">
+                        {{!data.expanded? 'chevron_right': 'expand_more'}}
+                      </mat-icon>
+            </a>
+            
+            <a class="sidebar-bar-link" 
+                *ngIf="!data.items || (data.items && data.items.length === 0)"
+                [routerLink]="[data.routeLink]"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{exact: true}"
             >
                 <mat-icon class="sidebar-link-icon">{{data.icon}}</mat-icon>
                 <span class="sidebar-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
             </a>
-            <app-sublevel-bar [data]="data"
-              [collapsed]="collapsed"
-            ></app-sublevel-bar>
+            <div *ngIf="collapsed && data.items && data.items.length > 0">
+                <app-sublevel-bar
+                    [data]="data"
+                    [collapsed]="collapsed"
+                    [multiple]="multiple"
+                    [expanded]="data.expanded"
+                >
+
+                </app-sublevel-bar>
+            </div>
         </li>
     </ul>
 </div>

@@ -1,5 +1,6 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
+import { ISidebarData } from './helper';
 import { sidebarData } from './sidebar-data';
 
 interface SideBarToggle{
@@ -62,5 +63,16 @@ export class SidebarComponent implements OnInit{
   closeSideBar(): void {
     this.collapsed = false;
     this.onToggleSideBar.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+  }
+
+  handleClick(item: ISidebarData): void {
+    if(!this.multiple){
+      for(let modelItem of this.sideData){
+        if(item !== modelItem && modelItem.expanded){
+          modelItem.expanded = false;
+        }
+      }
+    }
+    item.expanded = !item.expanded
   }
 }
