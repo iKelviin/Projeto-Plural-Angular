@@ -45,6 +45,7 @@ import {} from '@angular/material/form-field';
 import {} from '@angular/material/input';
 import { DateDisplayHeaderPipe } from './pipes/dateDisplayHeader.pipe';
 import { SublevelBarComponent } from './components/Base/sidebar/sublevel-bar.component';
+import { ImpressaoComponent } from './components/Pages/Departamentos/impressao/impressao.component';
 
 @NgModule({
   declarations: [

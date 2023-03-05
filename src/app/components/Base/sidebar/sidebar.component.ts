@@ -1,6 +1,7 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
-import { ISidebarData } from './helper';
+import { Router } from '@angular/router';
+import { fadeInOut, ISidebarData } from './helper';
 import { sidebarData } from './sidebar-data';
 
 interface SideBarToggle{
@@ -13,14 +14,7 @@ interface SideBarToggle{
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
   animations: [
-    trigger('fadeInOut', [
-      transition(':enter',[
-        style({opacity: 0}),
-        animate('1000ms',
-        style({opacity: 1})
-        )
-      ])
-    ]),
+    fadeInOut,
     trigger('rotate', [
       transition(':enter', [
         animate('1000ms',
@@ -33,6 +27,8 @@ interface SideBarToggle{
   ]
 })
 export class SidebarComponent implements OnInit{
+
+  constructor(public router: Router) {}
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
@@ -52,7 +48,7 @@ export class SidebarComponent implements OnInit{
   collapsed = false;
   screenWidth = 0;
   sideData = sidebarData;
-  multiple: boolean = false;
+  multiple: boolean = true;
 
 
   toggleCollapse(): void{
@@ -74,5 +70,19 @@ export class SidebarComponent implements OnInit{
       }
     }
     item.expanded = !item.expanded
+  }
+
+  getActiveClass(data: ISidebarData): string {
+    return this.router.url.includes(data.routeLink)? 'active':'';
+  }
+
+  shrinkItems(item: ISidebarData): void {
+    if(!this.multiple){
+      for(let modelItem of this.sideData){
+        if(item !== modelItem && modelItem.expanded){
+          modelItem.expanded = false;
+        }
+      }
+    }
   }
 }

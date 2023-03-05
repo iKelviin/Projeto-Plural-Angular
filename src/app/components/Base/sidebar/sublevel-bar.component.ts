@@ -1,6 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
-import { ISidebarData } from './helper';
+import { Router } from '@angular/router';
+import { fadeInOut, ISidebarData } from './helper';
+import { sidebarData } from './sidebar-data';
 
 @Component({
   selector: 'app-sublevel-bar',
@@ -11,12 +13,33 @@ import { ISidebarData } from './helper';
     : {value: 'hidden',
        params : {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '0'}}"
     class="sublevel-bar">
+
+      <!--li  *ngFor="let item of data.items" 
+            class="sublevel-bar-item">
+
+              <a class="sublevel-bar-link"
+                (click)="handleClick(item)"
+                *ngIf="item.items && item.items.length > 0"
+                
+                >
+                <button mat-button [matMenuTriggerFor]="">
+
+                  <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
+
+                </button>
+                
+              </a>
+      </li-->
+
+
+
+    
       <li  *ngFor="let item of data.items" class="sublevel-bar-item">
         <a class="sublevel-bar-link"
           (click)="handleClick(item)"
           *ngIf="item.items && item.items.length > 0">
-          <mat-icon class="sublevel-link-icon">{{item.icon}}</mat-icon>
-          <span class="sublevel-link-text" *ngIf="collapsed">{{item.label}}</span>
+          
+          <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
           <mat-icon *ngIf="item.items && collapsed" class="menu-collapse-icon">
             {{!item.expanded? 'chevron_right': 'expand_more'}}
           </mat-icon>
@@ -28,10 +51,11 @@ import { ISidebarData } from './helper';
           [routerLinkActiveOptions]="{exact: true}"
         >
         <mat-icon class="sublevel-link-icon">{{item.icon}}</mat-icon>
-        <span class="sublevel-link-text" *ngIf="collapsed">{{item.label}}</span>
+        <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
         </a>
         <div *ngIf="item.items && item.items.length > 0">
           <app-sublevel-bar
+            [data]="item"
             [collapsed]="collapsed"
             [multiple]="multiple"
             [expanded]="item.expanded"
@@ -43,6 +67,7 @@ import { ISidebarData } from './helper';
   `,
   styleUrls: ['./sidebar.component.scss'],
   animations:[
+    fadeInOut,
     trigger('submenu',[
       state('hidden',style({
         height: '0',
@@ -70,8 +95,14 @@ export class SublevelBarComponent implements OnInit{
   @Input() expanded: boolean | undefined;
   @Input() multiple: boolean = false;
 
+  constructor(
+    private router: Router
+  ) {}
   ngOnInit(): void {
   }
+
+  sideData = sidebarData;
+
 
   handleClick(item:any): void {
     if(!this.multiple){
@@ -84,5 +115,9 @@ export class SublevelBarComponent implements OnInit{
       }
     }
     item.expanded = !item.expanded;
+  }
+
+  getActiveClass(item: ISidebarData): string {
+    return item.expanded && this.router.url.includes(item.routeLink) ? 'active-sublevel' : '';
   }
 }

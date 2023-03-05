@@ -48,6 +48,12 @@ const routes: Routes = [
     path: 'turno',
     component: PassagemTurnoComponent,
     ...canActivate(redirectToLogin)
+  },
+  {
+    path:'',
+    loadChildren: () => 
+        import('./components/Pages/Departamentos/impressao/impressao.module')
+        .then(m => m.ImpressaoModule)
   }
 ];
 
