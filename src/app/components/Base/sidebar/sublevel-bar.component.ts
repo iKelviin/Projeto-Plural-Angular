@@ -14,35 +14,46 @@ import { sidebarData } from './sidebar-data';
        params : {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '0'}}"
     class="sublevel-bar">
 
-      <!--li  *ngFor="let item of data.items" 
-            class="sublevel-bar-item">
 
-              <a class="sublevel-bar-link"
-                (click)="handleClick(item)"
-                *ngIf="item.items && item.items.length > 0"
-                
-                >
-                <button mat-button [matMenuTriggerFor]="">
-
-                  <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
-
-                </button>
-                
-              </a>
-      </li-->
-
-
-
-    
       <li  *ngFor="let item of data.items" class="sublevel-bar-item">
         <a class="sublevel-bar-link"
           (click)="handleClick(item)"
-          *ngIf="item.items && item.items.length > 0">
-          
-          <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
-          <mat-icon *ngIf="item.items && collapsed" class="menu-collapse-icon">
-            {{!item.expanded? 'chevron_right': 'expand_more'}}
-          </mat-icon>
+          *ngIf="item.items && item.items.length > 0 && item.sublevel === 1">
+
+          <button mat-button [matMenuTriggerFor]="menu" >
+            <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
+            <mat-icon *ngIf="item.items && collapsed" class="menu-collapse-icon">
+             chevron_right
+            </mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu" >
+            <ng-container *ngFor="let item of item.items" >
+              <button mat-menu-item >
+                <app-sublevel-menu
+                  [data]="item"
+                  *ngIf="isExpandable(item); else menuItem"
+                >
+                </app-sublevel-menu>
+                <!--
+                <span *ngIf="!isExpandable(item)">{{item.label}}</span>
+                <span *ngIf="isExpandable(item)">{{item.label}}</span>
+                <mat-icon-- *ngIf="isExpandable(item)" class="menu-collapse-icon-popup">
+                chevron_right
+                </mat-icon-->
+              </button>
+            </ng-container>
+            <ng-template #menuItem>
+              <ng-container *ngFor="let item of item.items"
+              >
+                <button mat-menu-item>
+                    {{item.label}}
+                </button>
+            </ng-container>
+            </ng-template>
+
+
+          </mat-menu>
         </a>
         <a class="sublevel-bar-link"
           *ngIf="!item.items || (item.items && item.items.length === 0)"
@@ -53,14 +64,14 @@ import { sidebarData } from './sidebar-data';
         <mat-icon class="sublevel-link-icon">{{item.icon}}</mat-icon>
         <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
         </a>
-        <div *ngIf="item.items && item.items.length > 0">
+        <!--div *ngIf="item.items && item.items.length > 0">
           <app-sublevel-bar
             [data]="item"
             [collapsed]="collapsed"
             [multiple]="multiple"
             [expanded]="item.expanded"
           ></app-sublevel-bar>
-        </div>
+        </div-->
       </li>
 
     </ul>
@@ -88,12 +99,14 @@ export class SublevelBarComponent implements OnInit{
     routeLink: '',
     icon: '',
     label: '',
+    sublevel: 0,
     items: []
   }
   @Input() collapsed = false;
   @Input() animating: boolean | undefined;
   @Input() expanded: boolean | undefined;
   @Input() multiple: boolean = false;
+  @Input() trigger = '';
 
   constructor(
     private router: Router
@@ -119,5 +132,14 @@ export class SublevelBarComponent implements OnInit{
 
   getActiveClass(item: ISidebarData): string {
     return item.expanded && this.router.url.includes(item.routeLink) ? 'active-sublevel' : '';
+  }
+
+  isExpandable(item: ISidebarData): boolean {
+    if(item.items && item.items.length > 0){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 }

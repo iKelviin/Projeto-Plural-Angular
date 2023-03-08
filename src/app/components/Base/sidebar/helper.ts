@@ -6,6 +6,7 @@ export interface ISidebarData {
   label: string;
   expanded?: boolean;
   items?: ISidebarData[];
+  sublevel: number;
 }
 
 export const fadeInOut = trigger('fadeInOut', [

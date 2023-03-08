@@ -7,7 +7,7 @@
     <div class="scrollwrap scrollwrap_delayed">
         <ul class="sidebar-bar">
             <li class="sidebar-bar-item" *ngFor="let data of sideData">
-                <a class="sidebar-bar-link" (click)="handleClick(data)" 
+                <a class="sidebar-bar-link" (click)="handleClick(data)"
                     *ngIf="data.items && data.items.length > 0"
                     [ngClass]="getActiveClass(data)"
                 >
@@ -19,8 +19,8 @@
                             {{!data.expanded? 'chevron_right': 'expand_more'}}
                           </mat-icon>
                 </a>
-                
-                <a class="sidebar-bar-link" 
+
+                <a class="sidebar-bar-link"
                     *ngIf="!data.items || (data.items && data.items.length === 0)"
                     [routerLink]="[data.routeLink]"
                     routerLinkActive="active"
@@ -37,10 +37,10 @@
                         [multiple]="multiple"
                         [expanded]="data.expanded"
                     >
-    
+
                     </app-sublevel-bar>
                 </div>
             </li>
-        </ul>        
+        </ul>
     </div>
 </div>
