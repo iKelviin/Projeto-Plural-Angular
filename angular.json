@@ -17,7 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "stylePreprocessorOptions": { "includePaths": ["node_modules"] },
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules"
+              ]
+            },
             "outputPath": "dist/login",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -100,6 +104,16 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Login:build:production",
+            "firebaseProject": "angular-plural",
+            "firebaseHostingSite": "angular-plural"
           }
         }
       }

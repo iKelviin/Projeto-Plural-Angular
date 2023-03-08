@@ -18,7 +18,7 @@
     </div>
 
 
-    <input #inputField  type="file" hidden (change)="uploadFile($event, user)">
+    <input #inputField  type="file" hidden (change)="uploadImage($event, user)">
     <form class="margin-top" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
         <div class="row">
             <mat-form-field>

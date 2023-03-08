@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '@angular/fire/auth';
-import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { concatMap, switchMap, tap } from 'rxjs/operators';
+import { concatMap } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { AuthenticationService } from 'src/app/services/Authentication/authentication.service';
 import { ImageUploadService } from 'src/app/services/Image-upload/image-upload.service';
@@ -19,43 +19,45 @@ export class ProfileComponent implements OnInit{
 
   user$ = this.usersService.currentUserProfile$;
 
-  profileForm = this.fb.group({
-    uid: [''],
-    displayName: [''],
-    firstName: [''],
-    lastName: [''],
-    occupation: ['']    
+  profileForm = new UntypedFormGroup({
+    uid: new UntypedFormControl(''),
+    displayName: new UntypedFormControl(''),
+    firstName: new UntypedFormControl(''),
+    lastName: new UntypedFormControl(''),
+    occupation: new UntypedFormControl(''),
   });
 
   constructor(
     private imageUploadService: ImageUploadService,
     private toast: HotToastService,
-    private usersService: UsersService,
-    private fb: NonNullableFormBuilder
+    private usersService: UsersService
   ){}
 
   ngOnInit(): void {
     this.usersService.currentUserProfile$
-    .pipe(untilDestroyed(this), tap(console.log))
-    .subscribe((user) => {
-      this.profileForm.patchValue({ ...user });
-    });
+      .pipe(untilDestroyed(this))
+      .subscribe((user) => {
+        this.profileForm.patchValue({ ...user });
+      });
   }
 
 
-  uploadFile(event: any, {uid}: ProfileUser) {
+
+  uploadImage(event: any, user: ProfileUser) {
     this.imageUploadService
-    .uploadImage(event.target.files[0], `images/profile/${uid}`)
-    .pipe(
-      this.toast.observe({
+      .uploadImage(event.target.files[0], `images/profile/${user.uid}`)
+      .pipe(
+        this.toast.observe({
         loading: 'Fazendo upload...',
         success: 'Imagem alterada com sucesso!',
-        error: 'Ocorreu um erro durante a atualização'
+        error: 'Ocorreu um erro durante a atualização',
       }),
-      switchMap((photoURL) => 
-      this.usersService.updateUser({ uid, photoURL }))
-    ).subscribe();
-  }
+      concatMap((photoURL) =>
+        this.usersService.updateUser({ uid: user.uid, photoURL })
+      )
+    )
+    .subscribe();
+}
 
   saveProfile() {
     const { uid, ...data } = this.profileForm.value;
@@ -75,5 +77,5 @@ export class ProfileComponent implements OnInit{
       )
       .subscribe();
   }
-  
+
 }
