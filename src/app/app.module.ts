@@ -47,8 +47,6 @@ import { DateDisplayHeaderPipe } from './pipes/dateDisplayHeader.pipe';
 import { SublevelBarComponent } from './components/Base/sidebar/sublevel-bar.component';
 import { ImpressaoComponent } from './components/Pages/Departamentos/impressao/impressao.component';
 import { SublevelMenuComponent } from './components/Base/sidebar/sublevel-menu.component';
-import { TesteCommitComponent } from './components/Base/teste-commit/teste-commit.component';
-import { Teste2Component } from './components/Base/teste2/teste2.component';
 
 @NgModule({
   declarations: [
@@ -66,8 +64,6 @@ import { Teste2Component } from './components/Base/teste2/teste2.component';
     DateDisplayHeaderPipe,
     SublevelBarComponent,
     SublevelMenuComponent,
-    TesteCommitComponent,
-    Teste2Component
   ],
   imports: [
     BrowserModule,
