@@ -2,18 +2,15 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 // Material
-import { MatMenuModule } from '@angular/material/menu'; // importe o módulo MatMenuModule
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatAutocompleteModule } from '@angular/material/autocomplete'
-import { MatListModule } from '@angular/material/list'
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatListModule } from '@angular/material/list';
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -23,9 +20,6 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage } from '@angular/fire/storage'
 import { getFirestore, provideFirestore } from '@angular/fire/firestore'
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
 //Components
@@ -36,15 +30,23 @@ import { HomeComponent } from './components/Pages/home/home.component';
 import { environment } from '../environments/environment';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './components/Base/navbar/navbar.component';
 import { getStorage } from 'firebase/storage';
 import { ProfileComponent } from './components/Pages/profile/profile.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { BodyComponent } from './components/body/body.component';
+import { SidebarComponent } from './components/Base/sidebar/sidebar.component';
+import { BodyComponent } from './components/Base/body/body.component';
 import { ChatComponent } from './components/Pages/chat/chat.component';
 import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passagem-turno.component';
-import { ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 
+import { DateDisplayPipe } from './pipes/date-display.pipe';
+import { TimeAgoPipe } from 'time-ago-pipe';
+import { DatePipe } from '@angular/common';
+import {} from '@angular/material/form-field';
+import {} from '@angular/material/input';
+import { DateDisplayHeaderPipe } from './pipes/dateDisplayHeader.pipe';
+import { SublevelBarComponent } from './components/Base/sidebar/sublevel-bar.component';
+import { ImpressaoComponent } from './components/Pages/Departamentos/impressao/impressao.component';
+import { SublevelMenuComponent } from './components/Base/sidebar/sublevel-menu.component';
 
 @NgModule({
   declarations: [
@@ -57,16 +59,20 @@ import { ScreenTrackingService,UserTrackingService } from '@angular/fire/analyti
     SidebarComponent,
     BodyComponent,
     ChatComponent,
-    PassagemTurnoComponent
+    PassagemTurnoComponent,
+    DateDisplayPipe,
+    DateDisplayHeaderPipe,
+    SublevelBarComponent,
+    SublevelMenuComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbarModule,
     MatIconModule,
+    MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule,
+    MatToolbarModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HotToastModule.forRoot(),
@@ -77,15 +83,10 @@ import { ScreenTrackingService,UserTrackingService } from '@angular/fire/analyti
     provideStorage(()=> getStorage()),
     provideFirestore(()=> getFirestore()),
     MatAutocompleteModule,
-    MatDividerModule,
-    MatListModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAnalyticsModule,
-    AngularFirestoreModule
+    MatListModule
 
   ],
-  providers: [
-  ],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
