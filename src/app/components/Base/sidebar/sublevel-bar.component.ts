@@ -18,9 +18,9 @@ import { sidebarData } from './sidebar-data';
       <li  *ngFor="let item of data.items" class="sublevel-bar-item">
         <a class="sublevel-bar-link"
           (click)="handleClick(item)"
-          *ngIf="item.items && item.items.length > 0 && item.sublevel === 1">
+          *ngIf="item.items && item.items.length > 0" >
 
-          <button mat-button [matMenuTriggerFor]="menu" >
+          <button mat-button [matMenuTriggerFor]="menu" (click)="log(item)" >
             <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
             <mat-icon *ngIf="item.items && collapsed" class="menu-collapse-icon">
              chevron_right
@@ -28,30 +28,18 @@ import { sidebarData } from './sidebar-data';
           </button>
 
           <mat-menu #menu="matMenu" >
-            <ng-container *ngFor="let item of item.items" >
-              <button mat-menu-item >
-                <app-sublevel-menu
-                  [data]="item"
-                  *ngIf="isExpandable(item); else menuItem"
-                >
-                </app-sublevel-menu>
-                <!--
-                <span *ngIf="!isExpandable(item)">{{item.label}}</span>
-                <span *ngIf="isExpandable(item)">{{item.label}}</span>
-                <mat-icon-- *ngIf="isExpandable(item)" class="menu-collapse-icon-popup">
-                chevron_right
-                </mat-icon-->
+            <ng-container *ngFor="let it of item.items" >
+              
+              <button mat-menu-item *ngIf="it.items && it.items.length > 0" (click)="log(it)"> 
+                
+              <app-sublevel-menu [data]="it" > </app-sublevel-menu>
+
+              </button>
+              <button mat-menu-item *ngIf="!isExpandable(it)" (click)="log(it)">         
+                    {{it.label}}
               </button>
             </ng-container>
-            <ng-template #menuItem>
-              <ng-container *ngFor="let item of item.items"
-              >
-                <button mat-menu-item>
-                    {{item.label}}
-                </button>
-            </ng-container>
-            </ng-template>
-
+           
 
           </mat-menu>
         </a>
@@ -64,14 +52,6 @@ import { sidebarData } from './sidebar-data';
         <mat-icon class="sublevel-link-icon">{{item.icon}}</mat-icon>
         <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{item.label}}</span>
         </a>
-        <!--div *ngIf="item.items && item.items.length > 0">
-          <app-sublevel-bar
-            [data]="item"
-            [collapsed]="collapsed"
-            [multiple]="multiple"
-            [expanded]="item.expanded"
-          ></app-sublevel-bar>
-        </div-->
       </li>
 
     </ul>
@@ -116,7 +96,9 @@ export class SublevelBarComponent implements OnInit{
 
   sideData = sidebarData;
 
-
+log(item: ISidebarData){
+  return console.log(item)
+}
   handleClick(item:any): void {
     if(!this.multiple){
       if (this.data.items && this.data.items.length >0){

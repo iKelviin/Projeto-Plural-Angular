@@ -4,27 +4,35 @@ import { ISidebarData } from './helper';
 @Component({
   selector: 'app-sublevel-menu',
   template:`
-  <!--
-          <button mat-button [matMenuTriggerFor]="menu">
-            <span class="sublevel-link-text" @fadeInOut *ngIf="collapsed">{{data.label}}</span>
-            <mat-icon *ngIf="data.items && collapsed" class="menu-collapse-icon">
-             chevron_right
-            </mat-icon>
+  
+          <button mat-menu-item [matMenuTriggerFor]="menu">
+                <span (click)="log(data)">{{data.label}}</span>
           </button>
 
-          <mat-menu #menu="matMenu">
+          <mat-menu #menu="matMenu" >
+            <ng-container *ngFor="let it of data.items" >
+              
+              <button mat-menu-item *ngIf="it.items && it.items.length > 0" (click)="log(it)"> 
+                
+              <app-sublevel-menu [data]="it" > </app-sublevel-menu>
+
+              </button>
+              <button mat-menu-item *ngIf="!isExpandable(it)" (click)="log(it)">         
+                    {{it.label}}
+              </button>
+            </ng-container>
+           
+
+          </mat-menu>
+
+          <!--mat-menu #menu="matMenu">
             <ng-container *ngFor="let item of data.items">
               <button mat-menu-item>
                 <app-sublevel-menu
+                  [data]="item"
                   *ngIf="isExpandable(item); else menuItem"
                 >
                 </app-sublevel-menu>
-                <!--
-                <span *ngIf="!isExpandable(item)">{{item.label}}</span>
-                <span *ngIf="isExpandable(item)">{{item.label}}</span>
-                <mat-icon *ngIf="isExpandable(item)" class="menu-collapse-icon-popup">
-                chevron_right
-                </mat-icon>
               </button>
             </ng-container>
             <ng-template #menuItem>
@@ -38,39 +46,6 @@ import { ISidebarData } from './helper';
 
 
           </mat-menu-->
-          <button mat-menu-item [matMenuTriggerFor]="menu">
-                <span *ngIf="!isExpandable(data)">{{data.label}}</span>
-                <span *ngIf="isExpandable(data)">{{data.label}}</span>
-
-          </button>
-
-          <mat-menu #menu="matMenu">
-            <ng-container *ngFor="let item of data.items">
-              <button mat-menu-item>
-                <app-sublevel-menu
-                  [data]="item"
-                  *ngIf="isExpandable(item); else menuItem"
-                >
-                </app-sublevel-menu>
-                <!--
-                <span *ngIf="!isExpandable(item)">{{item.label}}</span>
-                <span *ngIf="isExpandable(item)">{{item.label}}</span>
-                <mat-icon-- *ngIf="isExpandable(item)" class="menu-collapse-icon-popup">
-                chevron_right
-                </mat-icon-->
-              </button>
-            </ng-container>
-            <ng-template #menuItem>
-              <ng-container *ngFor="let item of data.items"
-              >
-                <button mat-menu-item>
-                    {{item.label}}
-                </button>
-            </ng-container>
-            </ng-template>
-
-
-          </mat-menu>
   `
 })
 export class SublevelMenuComponent {
@@ -93,5 +68,9 @@ export class SublevelMenuComponent {
       return false;
     }
   }
+  
+log(item: ISidebarData){
+  return console.log(item)
+}
 
 }

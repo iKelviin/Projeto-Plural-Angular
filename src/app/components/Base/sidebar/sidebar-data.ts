@@ -1,4 +1,5 @@
 import { ISidebarData } from "./helper";
+import { SublevelBarComponent } from "./sublevel-bar.component";
 
 export const sidebarData: ISidebarData[] = [
     {
@@ -122,6 +123,56 @@ export const sidebarData: ISidebarData[] = [
                     //icon:'arrow_right',
                     label:'Cadastro Tipo Peça',
                     sublevel: 3,
+                  },
+                  {
+                    routeLink:'cadastros/checklist/tipo-peca',
+                    //icon:'arrow_right',
+                    label:'TESTE 1',
+                    sublevel: 3,
+                  },
+                  {
+                    routeLink:'cadastros/checklist/tipo-peca',
+                    //icon:'arrow_right',
+                    label:'TESTE 2',
+                    sublevel: 3,
+                  },
+                  {
+                    routeLink:'cadastros/checklist/tipo-peca',
+                    //icon:'arrow_right',
+                    label:'TESTE 3',
+                    sublevel: 3,
+                    items:[ {
+                      routeLink:'cadastros/checklist/tipo-peca',
+                      //icon:'arrow_right',
+                      label:'FILHO 1',
+                      sublevel: 3,
+                    },
+                    {
+                      routeLink:'cadastros/checklist/tipo-peca',
+                      //icon:'arrow_right',
+                      label:'FILHO 2',
+                      sublevel: 3,
+                    },
+                    {
+                      routeLink:'cadastros/checklist/tipo-peca',
+                      //icon:'arrow_right',
+                      label:'FILHO 3',
+                      sublevel: 3,
+                      items:[
+                        {
+                          routeLink:'cadastros/checklist/tipo-peca',
+                          //icon:'arrow_right',
+                          label:'NETO 1',
+                          sublevel: 3,
+                        },
+                        {
+                          routeLink:'cadastros/checklist/tipo-peca',
+                          //icon:'arrow_right',
+                          label:'NETO 2',
+                          sublevel: 3,
+                        }
+                      ]
+                    }]
                   }
                 ]
               },
@@ -177,16 +228,250 @@ export const sidebarData: ISidebarData[] = [
       ]
     }
     ,{
-      routeLink: 'Acabamento',
+      routeLink: 'acabamento',
       icon: 'import_contacts',
       label: 'Acabamento',
-      sublevel: 0
+      sublevel: 0,
+      items:[
+        {
+          routeLink: 'acabamento/pallets',
+          label: 'Pallets de Acabamento',
+          sublevel: 1
+        },
+        {
+          routeLink: 'acabamento/pallets',
+          label: 'Entrada de Pallets',
+          sublevel: 1
+        },
+        {
+          routeLink: 'acabamento/pallets',
+          label: 'Pallets de Desperdício',
+          sublevel: 1
+        },
+        {
+          routeLink: 'acabamento/pallets',
+          label: 'Ocorrências de produção',
+          sublevel: 1
+        },
+      ]
     }
     ,{
-      routeLink: 'Expedicao',
+      routeLink: 'expedicao',
       icon: ' local_shipping',
       label: 'Expedição',
-      sublevel: 0
+      sublevel: 0,
+      items:[
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Programação do PCP',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Gerenciamento de Repartes',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Recevimento de Materiais',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Quebra de Pallets Expedição',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Relatório de Expedição',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Sinalizador de Paletização',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Sinalizador de Requisição',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Pallets de OP encerradas (Exped)',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Programação da Expedição',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Transportadoras',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Clientes',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Cadastro de Tipos de Veiculo',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Cadastro de tabela de frete',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Cadastro de Veiculos',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Cadastro de Motoristas',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Consulta Solicitação de Transporte',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Consulta Op Encerradas',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Consulta Pallets OPs Encerradas',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Consulta Estoque',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Autoriza Recebimento',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Contratos Correios',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Consulta de Vinculos de Solicitação de Transp.',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Histórico de Expedição',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Manuseio',
+          sublevel: 1,
+          items:[
+            {
+              routeLink: 'expedicao/ppcp',
+              label: 'Consulta Manuseios',
+              sublevel: 2
+            },
+            {
+              routeLink: 'expedicao/ppcp',
+              label: 'Consulta TESTE',
+              sublevel: 2,
+             
+            },
+          ]
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Frete',
+          sublevel: 1,
+          items:[
+            {
+              routeLink: 'expedicao/ppcp',
+              label: 'Cadastro de Rotas',
+              sublevel: 2,
+              items:[]
+            },
+            {
+              routeLink: 'expedicao/ppcp',
+              label: 'Cadastro Frete Viagem',
+              sublevel: 2,
+              items:[]
+              
+            },
+            {
+              routeLink: 'expedicao/ppcp',
+              label: 'Fechamento Frete',
+              sublevel: 2,
+              items:[
+                {
+                  routeLink: 'expedicao/ppcp',
+                  label: 'Assim vai',
+                  sublevel: 3
+                }
+              ]
+            },
+            {
+              routeLink: 'expedicao/ppcp',
+              label: 'Verba Disponivel Frete',
+              sublevel: 2
+            }
+          ]
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Monitoramento Fiscal',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Consulta Milheiro',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Relatório de LeadTime',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Relatório de LeadTime Analitico',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Relatório de Ocup. Carga de Veiculos',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Relatório de Desempenho',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Relatório de Programação Diária',
+          sublevel: 1
+        },
+        {
+          routeLink: 'expedicao/ppcp',
+          label: 'Expedição com RFID',
+          sublevel: 1
+        },
+      ]
     }
     ,{
       routeLink: 'Portaria',
