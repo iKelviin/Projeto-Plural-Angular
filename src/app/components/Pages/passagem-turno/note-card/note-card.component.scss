@@ -1,0 +1,74 @@
+@import "../../../../../scss/base/variables";
+
+
+.x-button{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 34px;
+    width: 34px;
+    border-radius: 4px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    .x{
+        color: $AzulPlural;
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+        &:hover{
+            color: red;
+        }
+    }
+    
+}
+
+
+.note-card-container{
+    background-color: #fff;
+    border-radius: 20px;
+    position: relative;
+
+    //box-shadow: 0px 2px 15px 2px rgb(black,0.068);
+    transition: box-shadow 0.2s ease-out;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 4px 4px rgba(black, 0.15);
+
+        .x{
+            opacity: 1;
+            transition-delay: 0.35s;
+        }
+    }
+
+    .note-card-content{
+        padding: 25px;
+
+        .note-card-title{
+            font-size: 22px;
+            font-weight: bold;
+            color: $AzulPlural;
+        }
+
+        .note-card-body {
+            position: relative;
+
+            color: #555;
+
+            max-height: 80px;
+            overflow: hidden;
+
+            .fade-out-truncation {
+                position: absolute;
+
+                pointer-events: none;
+                bottom:0;
+
+                height: 50%;
+                width: 100%;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 1) 100%);
+                
+            }
+        }
+    }
+}

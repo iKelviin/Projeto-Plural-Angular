@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-passagem-turno',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./passagem-turno.component.scss']
 })
 export class PassagemTurnoComponent {
-
+  value = '';
+  cardTitle = '';
 }

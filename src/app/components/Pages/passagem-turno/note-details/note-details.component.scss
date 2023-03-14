@@ -1,0 +1,40 @@
+@import "../../../../../scss/base/variables";
+
+.form-container{
+    max-width: 500px;
+    position: relative;
+    margin: auto;
+}
+
+textarea{
+    height: 300px;
+}
+
+.close-button{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 34px;
+    width: 34px;
+    border-radius: 4px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+    .close{
+        color: $AzulPlural;
+        &:hover{
+            color: red;
+            cursor: pointer;
+        }
+    }
+    
+}
+
+h1{
+    font-size: 32px;
+    color: $AzulPlural;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+

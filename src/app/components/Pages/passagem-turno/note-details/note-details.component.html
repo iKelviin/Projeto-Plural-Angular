@@ -1,0 +1,26 @@
+<div class="form-container text-center mat-elevation-z5">
+    <h1>Passagem de Turno</h1>
+    <form [formGroup]="TurnoForm" (ngSubmit)="submit()">
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Titulo</mat-label>
+            <input matInput formControlName="title" type="text" required>    
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Mensagem</mat-label>
+          <textarea matInput formControlName="message" type="text" required></textarea>
+        </mat-form-field>
+
+        <div class="center margin-top">
+          <button mat-raised-button class="btn-azul"  type="submit">
+            Adicionar
+          </button>
+        </div>
+    </form>
+
+
+    <div class="close-button">
+        <mat-icon class="close">close</mat-icon>
+    </div>
+</div>

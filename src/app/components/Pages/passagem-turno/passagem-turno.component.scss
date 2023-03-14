@@ -1,0 +1,30 @@
+@import "../../../../scss/base/variables";
+
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+
+    max-width: 500px;
+    margin: auto;
+}
+
+.notes-list{
+    margin-top: 35px;
+}
+
+.mat-form-field-appearance-legacy{
+    width: 300px;
+    max-width: 300px;
+}
+
+.search-bar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+app-note-card {
+    display: block;
+    margin-bottom: 25px;
+}

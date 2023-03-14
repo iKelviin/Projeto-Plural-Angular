@@ -1,1 +1,19 @@
-<p>passagem-turno works!</p>
+<div class="main-container">
+
+    <div class="search-bar-container">
+        <mat-form-field>
+          <mat-label>Filtrar</mat-label>
+          <input matInput type="text" [(ngModel)]="value">
+          <button *ngIf="value" matSuffix mat-icon-button aria-label="Limpar" (click)="value=''">
+          <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+    </div>
+
+    <div class="notes-list">
+        <app-note-card [title]="'Manuseio RJ'" [body]="'Startou segunda linha com o CodLote 5'"></app-note-card>
+        <app-note-card [title]="'CAED'" [body]="'Tela de gerar pallet DV com problema, parametro incorreto na procedura USP_obterEtiqueta. Não foi possivel verificar a tempo. Favor verificar durante o segundo turno pois irá partir na segunda feira e com urgencia.'"></app-note-card>
+        <app-note-card [title]="'Provas'" [body]="'Versão atualizada na pasta do Fernando.'"></app-note-card>
+    </div>
+
+</div>

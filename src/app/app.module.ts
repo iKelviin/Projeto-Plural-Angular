@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 // Material
@@ -47,6 +48,8 @@ import { DateDisplayHeaderPipe } from './pipes/dateDisplayHeader.pipe';
 import { SublevelBarComponent } from './components/Base/sidebar/sublevel-bar.component';
 import { ImpressaoComponent } from './components/Pages/Departamentos/impressao/impressao.component';
 import { SublevelMenuComponent } from './components/Base/sidebar/sublevel-menu.component';
+import { NoteCardComponent } from './components/Pages/passagem-turno/note-card/note-card.component';
+import { NoteDetailsComponent } from './components/Pages/passagem-turno/note-details/note-details.component';
 
 
 @NgModule({
@@ -64,7 +67,9 @@ import { SublevelMenuComponent } from './components/Base/sidebar/sublevel-menu.c
     DateDisplayPipe,
     DateDisplayHeaderPipe,
     SublevelBarComponent,
-    SublevelMenuComponent
+    SublevelMenuComponent,
+    NoteCardComponent,
+    NoteDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +89,8 @@ import { SublevelMenuComponent } from './components/Base/sidebar/sublevel-menu.c
     provideStorage(()=> getStorage()),
     provideFirestore(()=> getFirestore()),
     MatAutocompleteModule,
-    MatListModule
+    MatListModule,
+    FormsModule
 
   ],
   providers: [DatePipe],

@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/Pages/profile/profile.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard'
 import { ChatComponent } from './components/Pages/chat/chat.component';
 import { PassagemTurnoComponent } from './components/Pages/passagem-turno/passagem-turno.component';
+import { NoteDetailsComponent } from './components/Pages/passagem-turno/note-details/note-details.component';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirecToHome = () => redirectLoggedInTo(['home']);
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path: 'turno',
     component: PassagemTurnoComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'turno/123',
+    component: NoteDetailsComponent,
     ...canActivate(redirectToLogin)
   },
   {
