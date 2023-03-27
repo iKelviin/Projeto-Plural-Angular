@@ -1,9 +1,19 @@
+@import "../../../../scss/base/variables";
+
 mat-toolbar{
     justify-content: end;
-    
+
 }
 
 .profile-image-toolbar{
   border-radius: 100%;
   margin-right: 8px;
+}
+
+.nav-bar{
+  background: $AzulPlural;
+  color: #fff;
+  box-shadow: 0.063rem 0 1.25rem 0 black;
+  position: fixed;
+  z-index: 100;
 }

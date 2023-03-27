@@ -57,7 +57,7 @@ const routes: Routes = [
   },
   {
     path:'',
-    loadChildren: () => 
+    loadChildren: () =>
         import('./components/Pages/Departamentos/impressao/impressao.module')
         .then(m => m.ImpressaoModule)
   }
