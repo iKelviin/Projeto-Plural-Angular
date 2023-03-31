@@ -4,29 +4,35 @@
 .container-chat {
     display: flex;
     height: 85vh;
-    border: solid 1px red;
+    margin-right: 2vw;
+    min-width: 800px;
 
-
-  > .chat-list {
+    .chat-list {
       width: 40%;
       margin: 16px;
       background: white;
       border-radius: 16px;
-      border: solid 1px green;
+      overflow: auto;
+
 
       .search-input {
-          margin: 24px;
-          display: flex;
-          justify-content: center;
-          border: solid 1px yellowgreen;
+        margin: 24px;
+        display: flex;
+        justify-content: center;
       }
-      .contatos{
-        border: solid 1px purple;
 
-      }
+
   }
-
 }
+
+
+
+
+
+
+
+
+
 
 
 .messages {
@@ -106,6 +112,7 @@
     padding-top: 16px;
     padding-bottom: 8px;
 
+
 }
 
 .input-area > mat-form-field{
@@ -133,39 +140,3 @@
     color: $AzulPlural;
 }
 
-.scrollwrap{
-  overflow-y: auto;
-  height: calc(100% - 3.65rem);
-
-}
-.contatos,
-.scrollwrap:hover,
-.scrollwrap:focus {
-    visibility: visible;
-}
-
-.scrollwrap_delayed{
-    transition: visibility 0.5s 0.2s;
-}
-
-.scrollwrap_delayed:hover {
-    transition: visibility 0.2s 0.2s;
-}
-
-.scrollwrap::-webkit-scrollbar {
-    width: 10px;
-}
-
-.scrollwrap::-webkit-scrollbar-track{
-    background: transparent;
-}
-
-.scrollwrap::-webkit-scrollbar-thumb{
-    background-color: #556268;
-    border-radius: 20px;
-}
-
-.scrollwrap {
-    scrollbar-width: thin;
-    scrollbar-color:#556268 transparent;
-}

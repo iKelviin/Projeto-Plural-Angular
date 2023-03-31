@@ -20,11 +20,11 @@
       </mat-autocomplete>
     </div>
 
-    <div class="contatos scrollwrap scrollwrap_delayed">
+    <div class="contatos">
       <mat-selection-list [multiple]="false" [formControl]="chatListControl">
         <mat-divider></mat-divider>
 
-        <mat-list-option *ngFor="let chat of myChats$ | async" [value]="chat.id">
+        <mat-list-option  *ngFor="let chat of myChats$ | async" [value]="chat.id">
           <img matListAvatar [src]="chat.chatPic ? chat.chatPic : 'assets/img/User.png'"/>
           <p mat-line class="chat-title">
             <span class="chat-name">{{ chat.chatName }}</span>
